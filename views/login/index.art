@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>企业用户系统登录</title>
+  <link href="/public/css/login.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+
+<body>
+  <div class="header">
+    <h1 class="headerLogo"><a title="后台管理系统" target="_blank" href="#"><img alt="logo" src="/public/images/login/logo.gif"></a></h1>
+  </div>
+  <div class="banner">
+    <div class="login-aside">
+      <div id="o-box-up"></div>
+      <div id="o-box-down" style="table-layout:fixed;">
+        <div class="error-box"></div>
+          <form>
+            <div class="fm-item">
+              <label for="logonId" class="form-label">企业用户系统登录：</label>
+              <input type="text" placeholder="输入账号" maxlength="100" id="username" class="i-text" ajaxurl="demo/valid.jsp" datatype="s6-18" errormsg="用户名至少6个字符,最多18个字符！">
+              <div class="ui-form-explain"></div>
+            </div>
+            <div class="fm-item">
+              <label for="logonId" class="form-label">登陆密码：</label>
+              <input type="password"  placeholder="请输入密码" maxlength="100" id="password" class="i-text" datatype="*6-16" nullmsg="请设置密码！" errormsg="密码范围在6~16位之间！">
+              <div class="ui-form-explain"></div>
+            </div>
+            <div class="fm-item pos-r">
+              <label for="logonId" class="form-label">验证码</label>
+              <input type="text" placeholder="请输入验证码" maxlength="100" id="yzm" class="i-text yzm" nullmsg="请输入验证码！">
+              <div class="ui-form-explain"><img src="/public/images/login/yzm.jpg" class="yzm-img" /></div>
+            </div>
+            <div class="fm-item">
+              <label for="logonId" class="form-label"></label>
+              <a type="button"  id="loginBtn" class="btn-login"></a>
+            </div>
+          </form>
+      </div>
+    </div>
+    <div class="bd">
+      <ul>
+        <li style="background:url(/public/images/login/theme-pic1.jpg) #CCE1F3 center 0 no-repeat;">
+          <!-- <a target="_blank" href="#"></a> -->
+        </li>
+       <!--  <li style="background:url(/public/images/login/theme-pic2.jpg) #BCE0FF center 0 no-repeat;">
+          <a target="_blank" href="#"></a>
+        </li> -->
+      </ul>
+    </div>
+    <div class="hd">
+      <ul></ul>
+    </div>
+  </div>
+  <script type="text/javascript" src="/public/js/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/public/js/jquery/dist/jQuery-md5.js"></script>
+  <script type="text/javascript">
+    $('#loginBtn').on('click', function(){
+      var params = {
+          username: $('#username').val(),
+          password: $.md5($('#password').val()),
+          yzm: $('#yzm').val()
+        }
+      if(validata(params)){
+        var host = window.location.host;
+        // 第一种方式
+        // $(this).attr('href', '/desktop' + handleParams(params))
+        // 第二种方式
+        window.location.href = 'http://' + host + '/desktop' + handleParams(params)
+        // 第三种方式
+        // window.open('http://' + host + '/desktop' + handleParams(params),'_self')
+      }
+    })
+    function validata(params){
+      if(params.username == ''){
+        alert('用户名不能为空')
+        return false
+      }
+      if(params.password == ''){
+        alert('密码不能为空')
+        return false
+      }
+      if(params.yzm == ''){
+        alert('验证码不能为空')
+        return false
+      }
+      return true
+    }
+    function handleParams(params){
+      var str = '?';
+      for(var prop in params){
+        str += prop + '=' + ( params[prop] ? params[prop] :'' ) + '&'
+      }
+      return str.substr(0,str.length-1)
+    }
+  </script>
+</body>
+
+</html>

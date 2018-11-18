@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>某某项目</title>
+  <title>企业用户管理系统</title>
 </head>
 <body>
   <h1>主体框架</h1>
+  <p>{{ params.username}}</p>
+  <p>{{ params.password}}</p>
+  <p>{{ params.yzm}}</p>
 </body>
 </html>
