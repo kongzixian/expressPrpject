@@ -1,9 +1,9 @@
 var express = require('express')
 
-var index = require('./index')
+var base = require('./base')
 
 // 创建route容器
 var route = express.Router()
-index(route)
+base(route)
 
 module.exports = route

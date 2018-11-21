@@ -96,8 +96,23 @@ label.form-label {
  .yzm{ width:112px;}
  .yzm-img{ position:absolute; left:130px; top:30px; cursor:pointer;}
 
-.btn-login{ display:inline-block; width:242px; height:38px; background:url(/public/images/login/login-btn.png) no-repeat; border:none; margin-top:5px;}
-
+.btn{ display:inline-block; height:38px; border:none; margin-top:5px; cursor:pointer;}
+.btn-login{
+  color:white;
+  line-height: 38px;
+  text-align: center;
+  display:block;
+  width:78%; 
+  background:red;
+}
+.btn-register{
+  color:white;
+  line-height: 38px;
+  text-align: center;
+  display:block;
+  width:78%; 
+  background:blue;
+}
 
 
 
@@ -114,6 +129,7 @@ label.form-label {
 #loginBtn{
 
 }
+
 
 
 
